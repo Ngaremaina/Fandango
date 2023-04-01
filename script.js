@@ -17,20 +17,28 @@ const listNames = (value)=>{
     })
 }
 
-
 const detailDescription = (value) => {
     let card = document.querySelector(".card")
+    let container = document.querySelector(".card-details")
     let image = document.createElement("img")
     let title= document.createElement("h4")
+    let description = document.createElement("p")
+    let runtime =document.createElement("p")
+    let showtime=document.createElement("p")
+    let availableTickets=document.createElement("p")
     image.src = value.poster
     title.innerText = value.title
+    description.innerText = value.description
+    runtime.innerText = value.runtime
+    showtime.innerText = `Time: ${value.showtime}`
+    availableTickets.innerText = value.capacity
     card.appendChild(image)
-    card.appendChild(title) 
-    
-
+    container.appendChild(title) 
+    container.appendChild(description) 
+    container.appendChild(runtime) 
+    container.appendChild(showtime) 
+    container.appendChild(availableTickets) 
 }
-
-
 const fetchFirstData = (value) => {
     let first = value[0]
     console.log(first)
@@ -38,26 +46,3 @@ const fetchFirstData = (value) => {
 }
 
 document.addEventListener('DOMContentLoaded',fetchData)
-
-
-
-
-
-
-// const listNames = (value)=>{
-//     let titleContainer = document.querySelector(".side-bar")    
-//     let names=document.createElement("a")
-//     names.innerText = value.title
-//     titleContainer.appendChild(names)
-
-//     names.addEventListener('click', () => {
-//         let card = document.querySelector(".card")
-//         let image = document.createElement("img")
-//         let title= document.createElement("h4")
-//         image.src = value.poster
-//         title.innerText = value.title
-//         card.appendChild(image)
-//         card.appendChild(title)
-//     }, {once: true})
-    
-// }
