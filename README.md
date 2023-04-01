@@ -9,7 +9,7 @@ To install any dependencies use npm install
 # Getting Started #
 To run this application:
 
-*Clone from here [Fandango] (https://github.com/Ngaremaina/Flatdango)
+*Clone from here [Fandango](https://github.com/Ngaremaina/Flatdango)
 
 *Run this command json-server --watch db.json
 
