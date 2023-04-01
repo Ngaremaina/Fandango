@@ -17,7 +17,7 @@ header{
 .parentcontainer{
   display: flex;
   flex-wrap: wrap;
-  padding: 20px;
+  padding: 5px 20px 5px 20px;
 }
 
 .side-bar {
