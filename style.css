@@ -2,6 +2,7 @@ body{
     margin: 0;
     background-color: black;
     color: white;
+    padding: 15px;
 }
 
 header{
@@ -18,13 +19,18 @@ header{
 
 .side-bar {
     height: 100%;
-    width: 300px;
+    width: 270px;
     background-color:black;
     color: white;
     padding-top: 10px;
     padding-bottom: 10px;
-    border: 2px solid #04AA6D;
+    border: 2px solid #8F8073;
   }
+
+.side-bar p{
+  text-align: center;
+  font-size: 20px;
+}
   
 .side-bar a {
   padding: 6px 8px 6px 16px;
@@ -53,8 +59,18 @@ header{
   padding-right: 20px;
 }
 
+.card-details{
+  width: 600px;
+}
+
 img{
   width: 100%;
 } 
 
-
+button{
+  padding: 10px;
+  margin-right: 10px;
+  color: white;
+  background-color: #5B9279;
+  cursor: pointer;
+}

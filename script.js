@@ -1,14 +1,4 @@
 let apiURL = "http://localhost:3000/films"
-// let filmobj = {
-//     id:"",
-//     title:"",
-//     runtime: "",
-//     capacity:"",
-//     showtime: "",
-//     tickets_sold:"",
-//     description:"",
-//     poster:"", 
-// }
 
 const fetchData = () =>{
     fetch(apiURL)
@@ -21,7 +11,7 @@ const fetchData = () =>{
 
 const fetchFirstData = (value) => {
     let first = value[0]
-    // console.log(first)
+    console.log(first)
     detailDescription(first)
 }
 
@@ -29,11 +19,11 @@ const listNames = (value)=>{
     value.forEach(element => {
         let titleContainer = document.querySelector(".side-bar")    
         let names=document.createElement("a")
-        // filmobj.title = element.title
         names.innerHTML = element.title
         titleContainer.appendChild(names)
-
-        // names.addEventListener("click", result => detailDescription(result))
+        
+        let posId = element.id
+        names.addEventListener("click", () => {listEachMovie(posId)}, {once:true})
     })
 }
 
@@ -47,18 +37,14 @@ const detailDescription = (value) => {
     let showtime=document.createElement("p")
     let availableTickets =document.createElement("p")
     let buyTickets = document.createElement("button")
-    
-    // filmobj.poster = value.poster
-    // filmobj.description = value.description
-    // filmobj.runtime = value.runtime
-    // filmobj.showtime = value.showtime
-    // filmobj.capacity = value.capacity
+    let deletemovie = document.createElement("button")
 
     image.src = value.poster
     title.innerText = value.title
     description.innerText = value.description
     runtime.innerText = `Duration: ${value.runtime} minutes`
     showtime.innerText = `Time: ${value.showtime}`
+    deletemovie.innerText = "Delete Movie"
 
     let diff = parseInt(value.capacity) - parseInt(value.tickets_sold)
     availableTickets.innerText = `Available Tickets: ${diff}`
@@ -78,26 +64,53 @@ const detailDescription = (value) => {
     container.appendChild(showtime) 
     container.appendChild(availableTickets)
     container.appendChild(buyTickets) 
+    container.appendChild(deletemovie)
     
-    buyTickets.addEventListener('click', (e) => {
+    buyTickets.addEventListener('click', () => {
         value.tickets_sold ++
         let tickets_sold = value.tickets_sold
         let posId = value.id
         console.log(tickets_sold, posId)
         updateTicketNum(posId, {tickets_sold})      
+       
         
     })
+
+    deletemovie.addEventListener("click", () => {
+        let posId = value.id
+        deleteMovie(posId)
+    })
+}
+
+const listEachMovie = (id) => {
+    fetch(`${apiURL}/${id}`)
+    .then(res => res.json())
+    .then(data => detailDescription(data))
 }
 
 const updateTicketNum = (id, value) =>{
     const options = {
         method: "PATCH",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Accept":"application/json"
         },
         body:JSON.stringify(value)
     }
-    fetch(`http://localhost:3000/films/${id}`, options)
+    fetch(`${apiURL}/${id}`, options)
+    .then(res => res.json)
+}
+
+const deleteMovie = (id) => {
+    const options = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept":"application/json"
+        },
+        
+    }
+    fetch(`${apiURL}/${id}`, options)
     .then(res => res.json)
 }
 
