@@ -9,12 +9,12 @@ To install any dependencies use npm install
 # Getting Started #
 To run this application:
 
-*Clone from here [Fandango](https://github.com/Ngaremaina/Flatdango)
+*Clone from here [Fandango](https://ngaremaina.github.io/Fandango/)
 
-*Run this command json-server --watch db.json
+*Run this command json-server --watch db.json-
 
 # To view the published HTML as a website #
-To visit this website, simply copy and paste this link into your browser and ensure that the json server is running.. https://ngaremaina.github.io/Flatdango/
+To visit this website, click on the link [here](https://ngaremaina.github.io/Fandango/) and ensure that the json server is running.
 
 # Author #
 Ngare Maina
