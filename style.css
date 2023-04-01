@@ -50,10 +50,11 @@ header{
   display: flex;
   flex-wrap: wrap;
   margin-left: 20px;
+  
 }
 .card {
   max-width: 300px;
-  margin: auto;
+  margin-bottom: auto;
   text-align: center;
   font-family: arial;
   padding-right: 20px;
@@ -62,6 +63,7 @@ header{
 
 .card-details{
   width: 600px;
+  margin-bottom: auto;
 }
 
 img{

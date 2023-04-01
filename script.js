@@ -17,10 +17,23 @@ const fetchFirstData = (value) => {
 
 const listNames = (value)=>{
     value.forEach(element => {
-        let titleContainer = document.querySelector(".side-bar")    
+        let titleContainer = document.querySelector(".movie-list")    
+        let soldOut = document.querySelector(".sold-out")
         let names=document.createElement("a")
         names.innerHTML = element.title
-        titleContainer.appendChild(names)
+
+        let diff = parseInt(element.capacity) - parseInt(element.tickets_sold)
+
+        if (diff <= 0){
+            // names.remove()
+            let soldnames = document.createElement("a")
+            soldnames.innerText = value.title
+            soldOut.appendChild(names)
+
+        }
+        else{
+            titleContainer.appendChild(names)
+        }       
         
         let posId = element.id
         names.addEventListener("click", () => {listEachMovie(posId)}, {once:true})
@@ -30,6 +43,8 @@ const listNames = (value)=>{
 const detailDescription = (value) => {
     let card = document.querySelector(".card")
     let container = document.querySelector(".card-details")
+    
+
     let image = document.createElement("img")
     let title= document.createElement("h4")
     let description = document.createElement("p")
@@ -51,7 +66,7 @@ const detailDescription = (value) => {
 
     if (diff <= 0){
         buyTickets.innerText = "SOLD OUT"
-        buyTickets.disabled = true
+        buyTickets.disabled = true  
     }
     else{
         buyTickets.innerText = "Buy Ticket"
@@ -72,8 +87,6 @@ const detailDescription = (value) => {
         let posId = value.id
         console.log(tickets_sold, posId)
         updateTicketNum(posId, {tickets_sold})      
-       
-        
     })
 
     deletemovie.addEventListener("click", () => {
