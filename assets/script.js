@@ -25,7 +25,6 @@ const listNames = (value)=>{
         let diff = parseInt(element.capacity) - parseInt(element.tickets_sold)
 
         if (diff <= 0){
-            // names.remove()
             let soldnames = document.createElement("a")
             soldnames.innerText = value.title
             soldOut.appendChild(names)
@@ -36,14 +35,16 @@ const listNames = (value)=>{
         }       
         
         let posId = element.id
-        names.addEventListener("click", () => {listEachMovie(posId)}, {once:true})
+        names.addEventListener("click", () => {
+            listEachMovie(posId)
+        })
     })
 }
+
 
 const detailDescription = (value) => {
     let card = document.querySelector(".card")
     let container = document.querySelector(".card-details")
-    
 
     let image = document.createElement("img")
     let title= document.createElement("h4")
@@ -93,6 +94,7 @@ const detailDescription = (value) => {
         let posId = value.id
         deleteMovie(posId)
     })
+
 }
 
 const listEachMovie = (id) => {
